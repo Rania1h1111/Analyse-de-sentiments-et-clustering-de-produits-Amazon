@@ -51,42 +51,9 @@ identifier les produits :
 
  moyens
 
-3. Structure du projet
-projet_TAA/
-│
-├── data/
-│   ├── raw/                # Données brutes
-│   └── processed/          # Données nettoyées + dataset de 8000 lignes
-│
-├── models/                 # Modèles sauvegardés (.pkl)
-│   ├── <BestModel>_sentiment.pkl
-│   └── tfidf_vectorizer.pkl
-│
-├── src/
-│   ├── config.py                    # Chemins et paramètres globaux
-│   ├── data_preparation.py          # Nettoyage + extraction du dataset original
-│   ├── generate_dataset_8000.py     # Génération automatique d'un dataset étendu
-│
-│   ├── supervised/
-│   │   ├── train.py                 # Pipeline complet de classification
-│   │   ├── predict.py               # Prédiction utilisateur
-│   │   ├── evaluation.py            # Métriques et matrices de confusion
-│   │   └── models/                  # Implémentations ML
-│   │       ├── knn_model.py
-│   │       ├── decision_tree_model.py
-│   │       └── random_forest_model.py
-│
-│   └── unsupervised/
-│       ├── features.py              # Construction des features produits
-│       ├── train.py                 # Pipeline clustering complet
-│       ├── visualization.py         # PCA, résumés, affichage
-│       └── models/
-│           ├── kmeans_model.py
-│           └── cah_model.py
-│
-└── README.md
 
-4. Préparation des données
+
+3. Préparation des données
  Étape 1 — Nettoyage du dataset original
 python -m src.data_preparation
 
@@ -138,7 +105,7 @@ obtenir des métriques plus stables et plus proches d’une situation réelle
 
 conserver toujours les 1000 avis d’origine dans le test, pour une évaluation honnête
 
-5. Apprentissage supervisé — Classification
+4. Apprentissage supervisé — Classification
 
 Exécution :
 
@@ -179,7 +146,7 @@ models/tfidf_vectorizer.pkl
 Tester une prédiction
 python -m src.supervised.predict
 
-6. Apprentissage non supervisé — Clustering
+5. Apprentissage non supervisé — Clustering
 
 Exécution :
 
@@ -236,7 +203,7 @@ ex : +3500 avis, satisfaction 92 %
 
 La CAH (Ward) identifie systématiquement ce produit atypique dans un cluster de taille 1.
 
-7. Exécution complète du pipeline
+6. Exécution complète du pipeline
 Installer les dépendances
 pip install -r requirements.txt
 

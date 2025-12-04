@@ -8,26 +8,13 @@ L’objectif du module supervisé est de prédire automatiquement la satisfactio
 
 Le meilleur modèle est sélectionné automatiquement selon la métrique F1-macro, puis sauvegardé afin d’être utilisé pour analyser de nouveaux avis via le script predict.py.
 
-2. Structure du module supervisé
-src/supervised/
-│
-├── train.py                 # pipeline complet : train/test, GridSearch, évaluation, sauvegarde
-├── predict.py               # prédiction en direct d’un avis saisi au clavier
-├── evaluation.py            # métriques, tableaux comparatifs, matrices de confusion
-└── models/
-    ├── knn_model.py          # KNN + hyperparamètres optimisés via GridSearchCV
-    ├── decision_tree_model.py   # Arbre de décision + GridSearchCV
-    └── random_forest_model.py   # Random Forest + GridSearchCV
 
- Remarques
-
-Chaque fichier dans models/ contient une fonction train_and_evaluate(...).
 
 train.py orchestre tout le pipeline.
 
 predict.py charge le meilleur modèle pour une utilisation réelle.
 
-3. Pipeline supervisé — Détaillé et clair
+2. Pipeline supervisé — Détaillé et clair
 1) Chargement des données
 
 Les données nettoyées sont chargées depuis :
@@ -161,7 +148,7 @@ models/tfidf_vectorizer.pkl
 
 Ces fichiers sont utilisés dans predict.py.
 
-4. Rôle du script predict.py
+3. Rôle du script predict.py
 
 predict.py simule une utilisation réelle du modèle.
 
@@ -181,7 +168,7 @@ ou
 
 C’est la partie « application » du pipeline.
 
-5. Utilisation de GridSearchCV
+4. Utilisation de GridSearchCV
 
 Pour chaque modèle, GridSearchCV (CV=5) est utilisé afin de :
 
@@ -195,7 +182,7 @@ obtenir un modèle beaucoup plus performant qu’un modèle par défaut
 
 C’est un élément essentiel d’un pipeline professionnel.
 
-6. Commandes essentielles
+5. Commandes essentielles
  Entraînement complet + comparaison + sauvegarde
 python -m src.supervised.train
 
